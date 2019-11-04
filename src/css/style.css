@@ -2,7 +2,9 @@
     background-color: bisque;
     height: 400px;
     width: 400px;
+    margin: 0;
     cursor: pointer;
+    position: absolute;
 }
 #closeButtonWindow{
     background-color: red;
