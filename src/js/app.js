@@ -16,6 +16,18 @@ const createNewWindow = function () {
 // App Window
 
 // Functions
+const makeItMainWindow = function (clickedWindow) {
+  clickedWindow.addEventListener('click', () => {
+    for (let i = 0; appOpen.childNodes.length - 1; i++) {
+      if (appOpen.childNodes[i].id === clickedWindow.id) {
+        console.log('im here ')
+      }
+      console.log('im here2')
+    }
+    console.log('im g')
+  })
+  console.log('im here4')
+}
 
 const dragFunct = function (toBeDraged) {
   let isDragable = false
@@ -26,19 +38,10 @@ const dragFunct = function (toBeDraged) {
       const theDifferanceX = mouseCurrentPosX - e.clientX
       const theDifferanceY = mouseCurrentPosY - e.clientY
       const divsPosition = toBeDraged.getBoundingClientRect()
-      console.log('Read this: ' + (divsPosition.left - theDifferanceX))
-      console.log('Read this2: ' + (divsPosition.top - theDifferanceY))
-      console.log((divsPosition.left - theDifferanceX) + 'px')
-      console.log((divsPosition.top - theDifferanceY) + 'px')
       toBeDraged.style.left = (divsPosition.left - theDifferanceX) + 'px'
       toBeDraged.style.top = (divsPosition.top - theDifferanceY) + 'px'
       mouseCurrentPosX = e.clientX
       mouseCurrentPosY = e.clientY
-
-      console.log('The current position is for X while move  ' + e.clientX)
-      console.log('The current position is for Y while move ' + e.clientY)
-      console.log('The poss differance for x ' + theDifferanceY)
-      console.log('The poss differance for y ' + theDifferanceX)
     }
   }
 
@@ -63,8 +66,8 @@ const memoryButtonClicked = function () {
     newMemoryWindow.setAttribute('id', memoGameWindAmount)
     console.log('the id of the window is: ' + newMemoryWindow.id)
     appOpen.appendChild(newMemoryWindow)
-    // const toRemove = memoGameWindAmount--
     dragFunct(newMemoryWindow)
+    makeItMainWindow(newMemoryWindow)
 
     newMemoryWindow.firstChild.addEventListener('click', () => {
       for (let i = 0; appOpen.childNodes.length; i++) {
@@ -72,7 +75,6 @@ const memoryButtonClicked = function () {
           appOpen.removeChild(appOpen.childNodes[i])
         }
       }
-      // memoGameWindAmount--
     })
     console.log(memoGameWindAmount)
     console.log('there are this many elements :' + appOpen.childNodes.length)
