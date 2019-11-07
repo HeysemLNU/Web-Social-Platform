@@ -17,16 +17,22 @@ const createNewWindow = function () {
 
 // Functions
 const makeItMainWindow = function (clickedWindow) {
+  console.log('--------We Start-------------------')
   clickedWindow.addEventListener('click', () => {
+    console.log('The window has been clicked')
+    console.log('This many elements in the PWD ' + appOpen.childNodes.length)
     for (let i = 0; appOpen.childNodes.length - 1; i++) {
+      console.log('The i currently is: ' + i)
       if (appOpen.childNodes[i].id === clickedWindow.id) {
-        console.log('im here ')
+        console.log('Inside the if statement ')
+        break
       }
-      console.log('im here2')
+      console.log('Inside the for loope')
     }
-    console.log('im g')
+    console.log('Show moved from iteratiobn')
   })
-  console.log('im here4')
+  console.log('Show not even clicked')
+  console.log('--------We end-------------------')
 }
 
 const dragFunct = function (toBeDraged) {
