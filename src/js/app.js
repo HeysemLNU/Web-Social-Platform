@@ -24,6 +24,8 @@ const makeItMainWindow = function (clickedWindow) {
     for (let i = 0; appOpen.childNodes.length - 1; i++) {
       console.log('The i currently is: ' + i)
       if (appOpen.childNodes[i].id === clickedWindow.id) {
+        appOpen.insertBefore(appOpen.childNodes[i], appOpen.lastChild.nextSibling)
+        console.log('The i inside the itteration currently is: ' + i)
         console.log('Inside the if statement ')
         break
       }
