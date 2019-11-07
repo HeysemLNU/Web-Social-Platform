@@ -16,6 +16,9 @@ const createNewWindow = function () {
 // App Window
 
 // Functions
+const insertImage = function (){
+  const memoryGameIcon = document.createElement()
+}
 const makeItMainWindow = function (clickedWindow) {
   console.log('--------We Start-------------------')
   clickedWindow.addEventListener('click', () => {
