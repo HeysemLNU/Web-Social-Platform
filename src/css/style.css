@@ -9,7 +9,31 @@
 #closeButtonWindow{
     background-color: red;
 }
-.memoryGamePics{
+.memoryGamePics1{
     height: 50px;
     width: 50px;
+}
+.memoryGamePics2{
+    height: 50px;
+    width: 50px;
+}
+.memoryGamePics3{
+    height: 50px;
+    width: 50px;
+}
+.memoryGamePics4{
+    height: 50px;
+    width: 50px;
+}
+.memoryGamePics5{
+    height: 50px;
+    width: 50px;
+}
+.memoryGamePics6{
+    height: 50px;
+    width: 50px;
+}
+.picContainer{
+    margin: auto;
+    width: 150px;
 }
