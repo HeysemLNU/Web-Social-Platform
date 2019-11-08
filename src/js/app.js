@@ -18,15 +18,37 @@ const createNewWindow = function () {
 // Functions
 const insertImage = function () {
   const memoryGameIconOne = document.createElement('img')
-  const memoryGameIconTwo = document.createElement('img')
-  const memoryGameIconThree = document.createElement('img')
-  const memoryGameIconFour = document.createElement('img')
-  const memoryGameIconFive = document.createElement('img')
-  const memoryGameIconSix = document.createElement('img')
+
   memoryGameIconOne.id = 'fotoOne'
   memoryGameIconOne.setAttribute('class', 'memoryGamePics')
   memoryGameIconOne.setAttribute('src', 'memoryGameImage/img1.jpg')
+  const memoryGameIconTwo = document.createElement('img')
+  memoryGameIconTwo.id = 'fotoTwo'
+  memoryGameIconTwo.setAttribute('class', 'memoryGamePics')
+  memoryGameIconTwo.setAttribute('src', 'memoryGameImage/img2.jpg')
+  const memoryGameIconThree = document.createElement('img')
+  memoryGameIconThree.id = 'fotoThree'
+  memoryGameIconThree.setAttribute('class', 'memoryGamePics')
+  memoryGameIconThree.setAttribute('src', 'memoryGameImage/img3.jpg')
+  const memoryGameIconFour = document.createElement('img')
+  memoryGameIconFour.id = 'fotoFour'
+  memoryGameIconFour.setAttribute('class', 'memoryGamePics')
+  memoryGameIconFour.setAttribute('src', 'memoryGameImage/img4.jpg')
+  const memoryGameIconFive = document.createElement('img')
+  memoryGameIconFive.id = 'fotoFive'
+  memoryGameIconFive.setAttribute('class', 'memoryGamePics')
+  memoryGameIconFive.setAttribute('src', 'memoryGameImage/img5.jpg')
+  const memoryGameIconSix = document.createElement('img')
+  memoryGameIconSix.id = 'fotoSix'
+  memoryGameIconSix.setAttribute('class', 'memoryGamePics')
+  memoryGameIconSix.setAttribute('src', 'memoryGameImage/img6.jpg')
+
   appOpen.appendChild(memoryGameIconOne)
+  appOpen.appendChild(memoryGameIconTwo)
+  appOpen.appendChild(memoryGameIconThree)
+  appOpen.appendChild(memoryGameIconFour)
+  appOpen.appendChild(memoryGameIconFive)
+  appOpen.appendChild(memoryGameIconSix)
 }
 const makeItMainWindow = function (clickedWindow) {
   console.log('--------We Start-------------------')
