@@ -16,8 +16,17 @@ const createNewWindow = function () {
 // App Window
 
 // Functions
-const insertImage = function (){
-  const memoryGameIcon = document.createElement()
+const insertImage = function () {
+  const memoryGameIconOne = document.createElement('img')
+  const memoryGameIconTwo = document.createElement('img')
+  const memoryGameIconThree = document.createElement('img')
+  const memoryGameIconFour = document.createElement('img')
+  const memoryGameIconFive = document.createElement('img')
+  const memoryGameIconSix = document.createElement('img')
+  memoryGameIconOne.id = 'fotoOne'
+  memoryGameIconOne.setAttribute('class', 'memoryGamePics')
+  memoryGameIconOne.setAttribute('src', 'memoryGameImage/img1.jpg')
+  appOpen.appendChild(memoryGameIconOne)
 }
 const makeItMainWindow = function (clickedWindow) {
   console.log('--------We Start-------------------')
@@ -93,5 +102,6 @@ const memoryButtonClicked = function () {
 }
 const mainFunc = function () {
   memoryButtonClicked()
+  insertImage()
 }
 mainFunc()
