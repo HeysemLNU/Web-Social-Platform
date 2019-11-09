@@ -95,26 +95,78 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
   let memoGameTries = 0
   let pairsFound = 0
   let imageOnePpermision = true
+  let imageTwopermision = true
+  let imageThreepermision = true
+  let imageFourpermision = true
+  let imageFivepermision = true
+  let imageSixpermision = true
 
   for (let i = 0; i < gameImageArray.length; i++) {
     gameImageArray[i].addEventListener('click', () => {
       if (gameImageArray[i].className === 'memoryGamePics1') {
         if (imageOnePpermision === true) {
-          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
+          console.log('Is anything selected: ' + previousImageSelected)
+          
+          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img1.jpg')
           if (previousImageSelected === true) {
+            console.log('Second Image is about to be selected')
+            console.log('Checking if the first one was a match to IMG1')
             if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
-              gameImageArray[i].setAttribute('src', 'memoryGameImage/match.png')
+              console.log('first one was a match to IMG1')
+              for (let z = 0; z < gameImageArray.length; z++) {
+                console.log('Going in a loop to find IMG1 in an array')
+                if (gameImageArray[z].className === classNameOfThePrevious) {
+                  console.log('Found it disable clicking and turn the image to Thumbs up in 2 secs')
+                  imageOnePpermision = false
+                  setTimeout(() => { gameImageArray[z].setAttribute('src', 'memoryGameImage/match.png')
+                  idOfThePrevious = null
+                  classNameOfThePrevious = null
+                  previousImageSelected = false
+                }, 1000)
+                }
+              }
+              pairsFound++
+            } else {
+              console.log('first one was not a match to IMG1')
+              idOfThePrevious = null
+              classNameOfThePrevious = null
+              previousImageSelected = false
+              memoGameTries++
+            }
+          } else {
+            console.log('First Image is about to be selected')
+            idOfThePrevious = gameImageArray[i].id
+            classNameOfThePrevious = gameImageArray[i].className
+            previousImageSelected = true
+            console.log('First Image Has been selected as IMG1')
+          }
+          memoGameTries++
+        }
+      } else if (gameImageArray[i].className === 'memoryGamePics2') {
+        if (imageTwopermision === true) {
+          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          gameImageArray[i].setAttribute('src', 'memoryGameImage/img2.jpg')
+          if (previousImageSelected === true) {
+            if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
               for (let z = 0; z < gameImageArray.length; z++) {
                 if (gameImageArray[z].className === classNameOfThePrevious) {
-                  imageOnePpermision = false
-                  gameImageArray[z].setAttribute('src', 'memoryGameImage/match.png')
+                  imageTwopermision = false
+                  setTimeout(() => { gameImageArray[z].setAttribute('src', 'memoryGameImage/match.png')
+                  idOfThePrevious = null
+                  classNameOfThePrevious = null
+                  previousImageSelected = false
+                }, 1000)
+              
                 }
               }
               pairsFound++
             } else {
               previousImageSelected = false
               memoGameTries++
+              idOfThePrevious = null
+              classNameOfThePrevious = null
+              previousImageSelected = false
             }
           } else {
             idOfThePrevious = gameImageArray[i].id
@@ -123,21 +175,26 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
           }
           memoGameTries++
         }
-      } else if (gameImageArray[i].className === 'memoryGamePics2') {
-        setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
-        gameImageArray[i].setAttribute('src', 'memoryGameImage/img2.jpg')
       } else if (gameImageArray[i].className === 'memoryGamePics3') {
-        setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
-        gameImageArray[i].setAttribute('src', 'memoryGameImage/img3.jpg')
+        if (imageThreepermision === true) {
+          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
+          gameImageArray[i].setAttribute('src', 'memoryGameImage/img3.jpg')
+        }
       } else if (gameImageArray[i].className === 'memoryGamePics4') {
-        setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
-        gameImageArray[i].setAttribute('src', 'memoryGameImage/img4.jpg')
+        if (imageFourpermision === true) {
+          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
+          gameImageArray[i].setAttribute('src', 'memoryGameImage/img4.jpg')
+        }
       } else if (gameImageArray[i].className === 'memoryGamePics5') {
-        setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
-        gameImageArray[i].setAttribute('src', 'memoryGameImage/img5.jpg')
+        if (imageFivepermision === true) {
+          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
+          gameImageArray[i].setAttribute('src', 'memoryGameImage/img5.jpg')
+        }
       } else if (gameImageArray[i].className === 'memoryGamePics6') {
-        setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
-        gameImageArray[i].setAttribute('src', 'memoryGameImage/img6.jpg')
+        if (imageSixpermision === true) {
+          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
+          gameImageArray[i].setAttribute('src', 'memoryGameImage/img6.jpg')
+        }
       }
     })
   }
