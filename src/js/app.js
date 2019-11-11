@@ -42,6 +42,14 @@ const insertImage = function () {
   memoryGameIconSix.id = 'fotoSix'
   memoryGameIconSix.setAttribute('class', 'memoryGamePics6')
   memoryGameIconSix.setAttribute('src', 'memoryGameImage/questionMark.png')
+  const memoryGameIconSeven = document.createElement('img')
+  memoryGameIconSeven.id = 'fotoSeven'
+  memoryGameIconSeven.setAttribute('class', 'memoryGamePics7')
+  memoryGameIconSeven.setAttribute('src', 'memoryGameImage/questionMark.png')
+  const memoryGameIconEight = document.createElement('img')
+  memoryGameIconEight.id = 'fotoEight'
+  memoryGameIconEight.setAttribute('class', 'memoryGamePics8')
+  memoryGameIconEight.setAttribute('src', 'memoryGameImage/questionMark.png')
   const memoryGameIconOneEx = document.createElement('img')
   memoryGameIconOneEx.id = 'fotoOneEx'
   memoryGameIconOneEx.setAttribute('class', 'memoryGamePics1')
@@ -66,6 +74,14 @@ const insertImage = function () {
   memoryGameIconSixEx.id = 'fotoSixEx'
   memoryGameIconSixEx.setAttribute('class', 'memoryGamePics6')
   memoryGameIconSixEx.setAttribute('src', 'memoryGameImage/questionMark.png')
+  const memoryGameIconSevenEx = document.createElement('img')
+  memoryGameIconSevenEx.id = 'fotoSevenEx'
+  memoryGameIconSevenEx.setAttribute('class', 'memoryGamePics7')
+  memoryGameIconSevenEx.setAttribute('src', 'memoryGameImage/questionMark.png')
+  const memoryGameIconEightEx = document.createElement('img')
+  memoryGameIconEightEx.id = 'fotoEightEx'
+  memoryGameIconEightEx.setAttribute('class', 'memoryGamePics8')
+  memoryGameIconEightEx.setAttribute('src', 'memoryGameImage/questionMark.png')
 
   const allTheImagesArray = []
 
@@ -78,13 +94,17 @@ const insertImage = function () {
   allTheImagesArray.push(memoryGameIconFour)
   allTheImagesArray.push(memoryGameIconFive)
   allTheImagesArray.push(memoryGameIconSix)
+  allTheImagesArray.push(memoryGameIconSeven)
+  allTheImagesArray.push(memoryGameIconEight)
   allTheImagesArray.push(memoryGameIconOneEx)
   allTheImagesArray.push(memoryGameIconTwoEx)
   allTheImagesArray.push(memoryGameIconThreeEx)
   allTheImagesArray.push(memoryGameIconFourEx)
   allTheImagesArray.push(memoryGameIconFiveEx)
   allTheImagesArray.push(memoryGameIconSixEx)
-
+  allTheImagesArray.push(memoryGameIconSevenEx)
+  allTheImagesArray.push(memoryGameIconEightEx)
+  
   console.log(allTheImagesArray.length)
   return allTheImagesArray
 }
@@ -96,17 +116,18 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
   let pairsFound = 0
   let imageOnePpermision = true
   let imageTwopermision = true
-  let imageThreepermision = true
-  let imageFourpermision = true
-  let imageFivepermision = true
-  let imageSixpermision = true
+  const imageThreepermision = true
+  const imageFourpermision = true
+  const imageFivepermision = true
+  const imageSixpermision = true
+  console.log(gameImageArray.length)
 
   for (let i = 0; i < gameImageArray.length; i++) {
     gameImageArray[i].addEventListener('click', () => {
       if (gameImageArray[i].className === 'memoryGamePics1') {
         if (imageOnePpermision === true) {
           console.log('Is anything selected: ' + previousImageSelected)
-          
+          console.log(idOfThePrevious)
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img1.jpg')
           if (previousImageSelected === true) {
@@ -119,11 +140,12 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
                 if (gameImageArray[z].className === classNameOfThePrevious) {
                   console.log('Found it disable clicking and turn the image to Thumbs up in 2 secs')
                   imageOnePpermision = false
-                  setTimeout(() => { gameImageArray[z].setAttribute('src', 'memoryGameImage/match.png')
-                  idOfThePrevious = null
-                  classNameOfThePrevious = null
-                  previousImageSelected = false
-                }, 1000)
+                  setTimeout(() => {
+                    gameImageArray[z].setAttribute('src', 'memoryGameImage/match.png')
+                    idOfThePrevious = null
+                    classNameOfThePrevious = null
+                    previousImageSelected = false
+                  }, 1000)
                 }
               }
               pairsFound++
@@ -152,12 +174,12 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               for (let z = 0; z < gameImageArray.length; z++) {
                 if (gameImageArray[z].className === classNameOfThePrevious) {
                   imageTwopermision = false
-                  setTimeout(() => { gameImageArray[z].setAttribute('src', 'memoryGameImage/match.png')
-                  idOfThePrevious = null
-                  classNameOfThePrevious = null
-                  previousImageSelected = false
-                }, 1000)
-              
+                  setTimeout(() => {
+                    gameImageArray[z].setAttribute('src', 'memoryGameImage/match.png')
+                    idOfThePrevious = null
+                    classNameOfThePrevious = null
+                    previousImageSelected = false
+                  }, 1000)
                 }
               }
               pairsFound++
@@ -194,6 +216,16 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
         if (imageSixpermision === true) {
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img6.jpg')
+        }
+      } else if (gameImageArray[i].className === 'memoryGamePics7') {
+        if (imageSixpermision === true) {
+          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
+          gameImageArray[i].setAttribute('src', 'memoryGameImage/img7.jpg')
+        }
+      } else if (gameImageArray[i].className === 'memoryGamePics8') {
+        if (imageSixpermision === true) {
+          setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 2000)
+          gameImageArray[i].setAttribute('src', 'memoryGameImage/img8.jpg')
         }
       }
     })
