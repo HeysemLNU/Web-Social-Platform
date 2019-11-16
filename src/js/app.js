@@ -1,4 +1,4 @@
-import { theBegining } from './chat.js'
+import { chatButtonClicked } from './chat.js'
 import { memoryButtonClickedTry } from './memory.js'
 const appOpen = document.querySelector('#applicationOpen')
 const memoryButton = document.querySelector('#buttonMemory')
@@ -61,7 +61,7 @@ export const dragFunct = function (toBeDraged) {
 }
 
 const mainFunc = function () {
-  theBegining()
+  chatButtonClicked(chatButton, appOpen)
   memoryButtonClickedTry(memoryButton, appOpen)
 }
 mainFunc()
