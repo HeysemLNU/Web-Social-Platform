@@ -31,16 +31,15 @@ const messageManagement = function (theMainDiv) {
   })
   theMainDiv.appendChild(messageSendButton)
   webSock.onmessage = function (event) {
-    console.log(event.data)
-    console.log('came gere')
+    const timeStamp = new Date()
     const theObjRecieved = JSON.parse(event.data)
-    console.log(theObjRecieved.type)
     if (theObjRecieved.type !== 'heartbeat') {
-      console.log('came here 2')
+      const putTimeStamp = '(' + timeStamp.getFullYear() + '-' + timeStamp.getMonth() + '-' + timeStamp.getDay() + '{' + timeStamp.getHours() + ':' + timeStamp.getMinutes() + '}' + ')'
+      console.log(putTimeStamp)
       const theMessageDiv = document.createElement('div')
-      theMessageDiv.textContent = theObjRecieved.username + ':   ' + theObjRecieved.data
+      theMessageDiv.textContent = theObjRecieved.username + ':   ' + theObjRecieved.data + '      ' + putTimeStamp
       messageWindow.appendChild(theMessageDiv)
-      console.log('came here 3')
+      messageWindow.insertBefore(theMessageDiv, messageWindow.firstChild)
     }
   }
 }
