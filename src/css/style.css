@@ -45,3 +45,19 @@
     margin: auto;
     width: 200px;
 }
+#chatMainDiv{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+.theMessageWindows{
+margin: auto;
+background-color: salmon;
+width: 300px; 
+height: 210px; 
+overflow: scroll;
+}
+.chatInputArea{
+    display: block;
+    width: 300px; 
+}

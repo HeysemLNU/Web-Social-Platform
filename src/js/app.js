@@ -4,6 +4,7 @@ const appOpen = document.querySelector('#applicationOpen')
 const memoryButton = document.querySelector('#buttonMemory')
 const chatButton = document.querySelector('#buttonChat')
 const randomButton = document.querySelector('#buttonRandom')
+
 export const createNewWindow = function () {
   const newWindow = document.createElement('div')
   newWindow.setAttribute('class', 'window')
@@ -61,7 +62,7 @@ export const dragFunct = function (toBeDraged) {
 }
 
 const mainFunc = function () {
-  chatButtonClicked(chatButton, appOpen)
   memoryButtonClickedTry(memoryButton, appOpen)
+  chatButtonClicked(chatButton, appOpen)
 }
 mainFunc()
