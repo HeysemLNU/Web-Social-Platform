@@ -89,3 +89,10 @@ overflow: scroll;
     top: 80%;
     left: 35%;
 }
+.icons{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top: 0%;
+    left: 90%;
+}
