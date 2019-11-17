@@ -1,5 +1,6 @@
 import { chatButtonClicked } from './chat.js'
 import { memoryButtonClickedTry } from './memory.js'
+import { alarmButtonClicked } from './alarm.js'
 const appOpen = document.querySelector('#applicationOpen')
 const memoryButton = document.querySelector('#buttonMemory')
 const chatButton = document.querySelector('#buttonChat')
@@ -64,5 +65,6 @@ export const dragFunct = function (toBeDraged) {
 const mainFunc = function () {
   memoryButtonClickedTry(memoryButton, appOpen)
   chatButtonClicked(chatButton, appOpen)
+  alarmButtonClicked(randomButton, appOpen)
 }
 mainFunc()

@@ -1,4 +1,5 @@
 import { createNewWindow, dragFunct, makeItMainWindow } from './app.js'
+const turnSound = new Audio('sound/memo.mp3')
 const insertImage = function () {
   const memoryGameIconOne = document.createElement('img')
   memoryGameIconOne.id = 'fotoOne'
@@ -88,6 +89,12 @@ const insertImage = function () {
   allTheImagesArray.push(memoryGameIconEightEx)
 
   console.log(allTheImagesArray.length)
+  for (let i = allTheImagesArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const tempor = allTheImagesArray[i]
+    allTheImagesArray[i] = allTheImagesArray[j]
+    allTheImagesArray[j] = tempor
+  }
   return allTheImagesArray
 }
 const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
@@ -112,6 +119,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
           console.log('Is anything selected: ' + previousImageSelected)
           console.log(idOfThePrevious)
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img1.jpg')
           if (previousImageSelected === true) {
             console.log('Second Image is about to be selected')
@@ -151,6 +159,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
       } else if (gameImageArray[i].className === 'memoryGamePics2') {
         if (imageTwopermision === true) {
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img2.jpg')
           if (previousImageSelected === true) {
             if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
@@ -183,6 +192,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
       } else if (gameImageArray[i].className === 'memoryGamePics3') {
         if (imageThreepermision === true) {
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img3.jpg')
           if (previousImageSelected === true) {
             if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
@@ -215,6 +225,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
       } else if (gameImageArray[i].className === 'memoryGamePics4') {
         if (imageFourpermision === true) {
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img4.jpg')
           if (previousImageSelected === true) {
             if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
@@ -247,6 +258,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
       } else if (gameImageArray[i].className === 'memoryGamePics5') {
         if (imageFivepermision === true) {
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img5.jpg')
           if (previousImageSelected === true) {
             if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
@@ -279,6 +291,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
       } else if (gameImageArray[i].className === 'memoryGamePics6') {
         if (imageSixpermision === true) {
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img6.jpg')
           if (previousImageSelected === true) {
             if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
@@ -311,6 +324,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
       } else if (gameImageArray[i].className === 'memoryGamePics7') {
         if (imageSevenpermision === true) {
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img7.jpg')
           if (previousImageSelected === true) {
             if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
@@ -343,6 +357,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
       } else if (gameImageArray[i].className === 'memoryGamePics8') {
         if (imageEightpermision === true) {
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
+          turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img8.jpg')
           if (previousImageSelected === true) {
             if (classNameOfThePrevious === gameImageArray[i].className && idOfThePrevious !== gameImageArray[i].id) {
