@@ -84,3 +84,8 @@ overflow: scroll;
     font-size: 55px;
     color: indigo;
 }
+#buttonContainer{
+    position: absolute;
+    top: 80%;
+    left: 35%;
+}

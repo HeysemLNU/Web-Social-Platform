@@ -1,6 +1,6 @@
 import { createNewWindow, dragFunct, makeItMainWindow } from './app.js'
 const turnSound = new Audio('sound/memo.mp3')
-const insertImage = function () {
+const insertImage = function (theSize) {
   const memoryGameIconOne = document.createElement('img')
   memoryGameIconOne.id = 'fotoOne'
   memoryGameIconOne.setAttribute('class', 'memoryGamePics1')
@@ -67,26 +67,41 @@ const insertImage = function () {
   memoryGameIconEightEx.setAttribute('src', 'memoryGameImage/questionMark.png')
 
   const allTheImagesArray = []
+  if (theSize === 4) {
+    allTheImagesArray.push(memoryGameIconOne)
+    allTheImagesArray.push(memoryGameIconTwo)
+    allTheImagesArray.push(memoryGameIconThree)
+    allTheImagesArray.push(memoryGameIconFour)
+    allTheImagesArray.push(memoryGameIconFive)
+    allTheImagesArray.push(memoryGameIconSix)
+    allTheImagesArray.push(memoryGameIconSeven)
+    allTheImagesArray.push(memoryGameIconEight)
+    allTheImagesArray.push(memoryGameIconOneEx)
+    allTheImagesArray.push(memoryGameIconTwoEx)
+    allTheImagesArray.push(memoryGameIconThreeEx)
+    allTheImagesArray.push(memoryGameIconFourEx)
+    allTheImagesArray.push(memoryGameIconFiveEx)
+    allTheImagesArray.push(memoryGameIconSixEx)
+    allTheImagesArray.push(memoryGameIconSevenEx)
+    allTheImagesArray.push(memoryGameIconEightEx)
+  } else if (theSize === 2) {
+    allTheImagesArray.push(memoryGameIconOne)
+    allTheImagesArray.push(memoryGameIconOneEx)
+    allTheImagesArray.push(memoryGameIconTwo)
+    allTheImagesArray.push(memoryGameIconTwoEx)
+  } else if (theSize === 3) {
+    allTheImagesArray.push(memoryGameIconOne)
+    allTheImagesArray.push(memoryGameIconOneEx)
+    allTheImagesArray.push(memoryGameIconTwo)
+    allTheImagesArray.push(memoryGameIconTwoEx)
+    allTheImagesArray.push(memoryGameIconThree)
+    allTheImagesArray.push(memoryGameIconThreeEx)
+    allTheImagesArray.push(memoryGameIconFour)
+    allTheImagesArray.push(memoryGameIconFourEx)
+  }
 
   // console.log(memoryGameIconOne.className) printing in classes do work which is good
   // The top is goinmg to be in another
-
-  allTheImagesArray.push(memoryGameIconOne)
-  allTheImagesArray.push(memoryGameIconTwo)
-  allTheImagesArray.push(memoryGameIconThree)
-  allTheImagesArray.push(memoryGameIconFour)
-  allTheImagesArray.push(memoryGameIconFive)
-  allTheImagesArray.push(memoryGameIconSix)
-  allTheImagesArray.push(memoryGameIconSeven)
-  allTheImagesArray.push(memoryGameIconEight)
-  allTheImagesArray.push(memoryGameIconOneEx)
-  allTheImagesArray.push(memoryGameIconTwoEx)
-  allTheImagesArray.push(memoryGameIconThreeEx)
-  allTheImagesArray.push(memoryGameIconFourEx)
-  allTheImagesArray.push(memoryGameIconFiveEx)
-  allTheImagesArray.push(memoryGameIconSixEx)
-  allTheImagesArray.push(memoryGameIconSevenEx)
-  allTheImagesArray.push(memoryGameIconEightEx)
 
   console.log(allTheImagesArray.length)
   for (let i = allTheImagesArray.length - 1; i > 0; i--) {
@@ -97,7 +112,7 @@ const insertImage = function () {
   }
   return allTheImagesArray
 }
-const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
+const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend, theStructure) {
   let previousImageSelected = false
   let classNameOfThePrevious = null
   let idOfThePrevious = null
@@ -111,11 +126,14 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
   let imageSixpermision = true
   let imageSevenpermision = true
   let imageEightpermision = true
+  const showTries = document.createElement('div')
 
   for (let i = 0; i < gameImageArray.length; i++) {
     gameImageArray[i].addEventListener('click', () => {
       if (gameImageArray[i].className === 'memoryGamePics1') {
         if (imageOnePpermision === true) {
+          memoGameTries++
+          showTries.textContent = 'Tries: ' + memoGameTries
           console.log('Is anything selected: ' + previousImageSelected)
           console.log(idOfThePrevious)
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
@@ -129,7 +147,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               for (let z = 0; z < gameImageArray.length; z++) {
                 console.log('Going in a loop to find IMG1 in an array')
                 if (gameImageArray[z].className === classNameOfThePrevious) {
-                  console.log('Found it disable clicking and turn the image to Thumbs up in 2 secs')
+                  console.log('Found it disable clicking and turn the image to Thumbs up in 1 secs')
                   imageOnePpermision = false
                   setTimeout(() => {
                     gameImageArray[z].setAttribute('src', 'memoryGameImage/match.png')
@@ -145,7 +163,6 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               idOfThePrevious = null
               classNameOfThePrevious = null
               previousImageSelected = false
-              memoGameTries++
             }
           } else {
             console.log('First Image is about to be selected')
@@ -154,10 +171,11 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
             previousImageSelected = true
             console.log('First Image Has been selected as IMG1')
           }
-          memoGameTries++
         }
       } else if (gameImageArray[i].className === 'memoryGamePics2') {
         if (imageTwopermision === true) {
+          memoGameTries++
+          showTries.textContent = 'Tries: ' + memoGameTries
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img2.jpg')
@@ -177,7 +195,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               pairsFound++
             } else {
               previousImageSelected = false
-              memoGameTries++
+
               idOfThePrevious = null
               classNameOfThePrevious = null
               previousImageSelected = false
@@ -187,10 +205,11 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
             classNameOfThePrevious = gameImageArray[i].className
             previousImageSelected = true
           }
-          memoGameTries++
         }
       } else if (gameImageArray[i].className === 'memoryGamePics3') {
         if (imageThreepermision === true) {
+          memoGameTries++
+          showTries.textContent = 'Tries: ' + memoGameTries
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img3.jpg')
@@ -210,7 +229,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               pairsFound++
             } else {
               previousImageSelected = false
-              memoGameTries++
+
               idOfThePrevious = null
               classNameOfThePrevious = null
               previousImageSelected = false
@@ -220,10 +239,11 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
             classNameOfThePrevious = gameImageArray[i].className
             previousImageSelected = true
           }
-          memoGameTries++
         }
       } else if (gameImageArray[i].className === 'memoryGamePics4') {
         if (imageFourpermision === true) {
+          memoGameTries++
+          showTries.textContent = 'Tries: ' + memoGameTries
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img4.jpg')
@@ -243,7 +263,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               pairsFound++
             } else {
               previousImageSelected = false
-              memoGameTries++
+
               idOfThePrevious = null
               classNameOfThePrevious = null
               previousImageSelected = false
@@ -253,10 +273,11 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
             classNameOfThePrevious = gameImageArray[i].className
             previousImageSelected = true
           }
-          memoGameTries++
         }
       } else if (gameImageArray[i].className === 'memoryGamePics5') {
         if (imageFivepermision === true) {
+          memoGameTries++
+          showTries.textContent = 'Tries: ' + memoGameTries
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img5.jpg')
@@ -276,7 +297,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               pairsFound++
             } else {
               previousImageSelected = false
-              memoGameTries++
+
               idOfThePrevious = null
               classNameOfThePrevious = null
               previousImageSelected = false
@@ -286,10 +307,11 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
             classNameOfThePrevious = gameImageArray[i].className
             previousImageSelected = true
           }
-          memoGameTries++
         }
       } else if (gameImageArray[i].className === 'memoryGamePics6') {
         if (imageSixpermision === true) {
+          memoGameTries++
+          showTries.textContent = 'Tries: ' + memoGameTries
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img6.jpg')
@@ -309,7 +331,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               pairsFound++
             } else {
               previousImageSelected = false
-              memoGameTries++
+
               idOfThePrevious = null
               classNameOfThePrevious = null
               previousImageSelected = false
@@ -319,10 +341,11 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
             classNameOfThePrevious = gameImageArray[i].className
             previousImageSelected = true
           }
-          memoGameTries++
         }
       } else if (gameImageArray[i].className === 'memoryGamePics7') {
         if (imageSevenpermision === true) {
+          memoGameTries++
+          showTries.textContent = 'Tries: ' + memoGameTries
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img7.jpg')
@@ -342,7 +365,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               pairsFound++
             } else {
               previousImageSelected = false
-              memoGameTries++
+
               idOfThePrevious = null
               classNameOfThePrevious = null
               previousImageSelected = false
@@ -352,10 +375,11 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
             classNameOfThePrevious = gameImageArray[i].className
             previousImageSelected = true
           }
-          memoGameTries++
         }
       } else if (gameImageArray[i].className === 'memoryGamePics8') {
         if (imageEightpermision === true) {
+          memoGameTries++
+          showTries.textContent = 'Tries: ' + memoGameTries
           setTimeout(() => { gameImageArray[i].setAttribute('src', 'memoryGameImage/questionMark.png') }, 1000)
           turnSound.play()
           gameImageArray[i].setAttribute('src', 'memoryGameImage/img8.jpg')
@@ -376,7 +400,7 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
               console.log(pairsFound)
             } else {
               previousImageSelected = false
-              memoGameTries++
+
               idOfThePrevious = null
               classNameOfThePrevious = null
               previousImageSelected = false
@@ -386,7 +410,6 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
             classNameOfThePrevious = gameImageArray[i].className
             previousImageSelected = true
           }
-          memoGameTries++
         }
       }
     })
@@ -396,7 +419,13 @@ const memoryGameChangePicks = function (gameImageArray, gameWindowToAppend) {
   for (let i = 0; i < gameImageArray.length; i++) {
     containerPics.appendChild(gameImageArray[i])
   }
-  gameWindowToAppend.appendChild(containerPics)
+  if (theStructure === 2) {
+    containerPics.style.width = '100px'
+  } else if (theStructure === 4) {
+    containerPics.style.width = '200px'
+  }
+  containerPics.appendChild(showTries)
+  gameWindowToAppend.insertBefore(containerPics, gameWindowToAppend.firstChild.nextSibling)
 }
 export const memoryButtonClickedTry = function (thememoryButton, theappOpen) {
   let memoGameWindAmount = 0
@@ -405,7 +434,31 @@ export const memoryButtonClickedTry = function (thememoryButton, theappOpen) {
     const newMemoryWindow = createNewWindow()
     newMemoryWindow.setAttribute('id', memoGameWindAmount)
     console.log('the id of the window is: ' + newMemoryWindow.id)
-    memoryGameChangePicks(insertImage(), newMemoryWindow)
+    memoryGameChangePicks(insertImage(4), newMemoryWindow, 4)
+    const buttonContainer = document.createElement('div')
+    buttonContainer.setAttribute('id', 'buttonContainer')
+    const twoTwoButton = document.createElement('button')
+    twoTwoButton.textContent = '2X2'
+    twoTwoButton.addEventListener('click', () => {
+      newMemoryWindow.removeChild(newMemoryWindow.childNodes[1])
+      memoryGameChangePicks(insertImage(2), newMemoryWindow, 2)
+    })
+    const twoFourButton = document.createElement('button')
+    twoFourButton.textContent = '2X4'
+    twoFourButton.addEventListener('click', () => {
+      newMemoryWindow.removeChild(newMemoryWindow.childNodes[1])
+      memoryGameChangePicks(insertImage(3), newMemoryWindow, 4)
+    })
+    const fourFourButton = document.createElement('button')
+    fourFourButton.textContent = '4X4'
+    fourFourButton.addEventListener('click', () => {
+      newMemoryWindow.removeChild(newMemoryWindow.childNodes[1])
+      memoryGameChangePicks(insertImage(4), newMemoryWindow, 4)
+    })
+    buttonContainer.appendChild(twoTwoButton)
+    buttonContainer.appendChild(twoFourButton)
+    buttonContainer.appendChild(fourFourButton)
+    newMemoryWindow.appendChild(buttonContainer)
     theappOpen.appendChild(newMemoryWindow)
     dragFunct(newMemoryWindow)
     makeItMainWindow(newMemoryWindow)
