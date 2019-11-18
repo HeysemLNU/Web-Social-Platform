@@ -100,9 +100,6 @@ const insertImage = function (theSize) {
     allTheImagesArray.push(memoryGameIconFourEx)
   }
 
-  // console.log(memoryGameIconOne.className) printing in classes do work which is good
-  // The top is goinmg to be in another
-
   console.log(allTheImagesArray.length)
   for (let i = allTheImagesArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))

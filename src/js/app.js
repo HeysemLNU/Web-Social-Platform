@@ -16,10 +16,6 @@ export const createNewWindow = function () {
   newWindow.appendChild(closeButton)
   return newWindow
 }
-// App Window
-
-// Functions
-// function for the memory game
 
 export const makeItMainWindow = function (clickedWindow) {
   clickedWindow.addEventListener('click', () => {
@@ -58,7 +54,6 @@ export const dragFunct = function (toBeDraged) {
   })
   window.addEventListener('mouseup', () => {
     isDragable = false
-    window.removeEventListener('mousemove', mouseMoveFunc)
   })
 }
 
