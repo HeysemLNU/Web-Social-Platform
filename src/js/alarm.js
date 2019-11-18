@@ -3,8 +3,10 @@ const alarmSound = new Audio('sound/alarm.mp3')
 const alarmSubFunc = function (theMainDiv, theHour, theMinute, theMessage) {
   let soundTheAlarm = true
   const showAlarm = document.createElement('div')
+  showAlarm.setAttribute('id', 'showAl')
   const showAlarmTime = document.createElement('div')
   showAlarmTime.textContent = theHour + ' : ' + theMinute
+  showAlarmTime.setAttribute('id', 'showTime')
   showAlarmTime.style.display = 'block'
   const showAlarmMessage = document.createElement('div')
   showAlarmMessage.textContent = theMessage

@@ -34,7 +34,7 @@ const messageManagement = function (theMainDiv) {
     const timeStamp = new Date()
     const theObjRecieved = JSON.parse(event.data)
     if (theObjRecieved.type !== 'heartbeat') {
-      const putTimeStamp = '(' + timeStamp.getFullYear() + '-' + timeStamp.getMonth() + '-' + timeStamp.getDay() + '{' + timeStamp.getHours() + ':' + timeStamp.getMinutes() + '}' + ')'
+      const putTimeStamp = '{' + timeStamp.getHours() + ':' + timeStamp.getMinutes() + '}'
       console.log(timeStamp.getDay())
       const theMessageDiv = document.createElement('div')
       theMessageDiv.textContent = theObjRecieved.username + ':   ' + theObjRecieved.data + '      ' + putTimeStamp

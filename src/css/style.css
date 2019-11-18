@@ -1,5 +1,5 @@
 .window{
-    background-color: bisque;
+    background-color: darkcyan;
     height: 400px;
     width: 400px;
     margin: 0;
@@ -71,7 +71,7 @@ overflow: scroll;
     top: 70%;
     left: 0%;
     text-align: center;
-    color: grey;
+    color: indigo;
 }
 #setAlarmButton{
     width: 173px;
@@ -95,4 +95,17 @@ overflow: scroll;
     position: absolute;
     top: 0%;
     left: 90%;
+}
+#theBody{
+    color: indigo;
+    background-color: grey;
+}
+#showAl{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+#showTime{
+    font-size: 55px;
+    font-family: "Courier New", Courier, monospace;
 }
