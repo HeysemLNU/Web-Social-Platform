@@ -1,5 +1,8 @@
-
+// This class implements the Chat app.
 import { createNewWindow, dragFunct, makeItMainWindow } from './app.js'
+// createNewWindow function returns a div which represents a window. It is a plain windows with only a close button, contents will be filled in this class.
+// dragFuntion allows the window to be dragged.
+// makeItMainWindow makes sure that the window clicked on is on top of all the other windows.
 let nameIsGiven = false
 let userNameChat = null
 const keyForChat = 'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'

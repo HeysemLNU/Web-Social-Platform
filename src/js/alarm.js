@@ -1,4 +1,8 @@
+// This class implements the Alarm app.
 import { createNewWindow, dragFunct, makeItMainWindow } from './app.js'
+// createNewWindow function returns a div which represents a window. It is a plain windows with only a close button, contents will be filled in this class.
+// dragFuntion allows the window to be dragged.
+// makeItMainWindow makes sure that the window clicked on is on top of all the other windows.
 const alarmSound = new Audio('sound/alarm.mp3')
 const alarmSubFunc = function (theMainDiv, theHour, theMinute, theMessage) {
   let soundTheAlarm = true
